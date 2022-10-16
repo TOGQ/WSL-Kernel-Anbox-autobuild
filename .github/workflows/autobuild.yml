@@ -45,15 +45,15 @@ jobs:
         uses: actions/upload-artifact@v3.0.0
         with:
           path: |
-          vmlinux
-          arch/x86/boot/bzImage  
+            vmlinux
+            arch/x86/boot/bzImage  
       
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.REPO_TOKEN }}"
           files: |
-          vmlinux
-          arch/x86/boot/bzImage 
+            vmlinux
+            arch/x86/boot/bzImage 
           prerelease: false
           automatic_release_tag: ${{ env.date }}
           
