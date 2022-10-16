@@ -36,7 +36,7 @@ jobs:
         run:  cp Microsoft/config-wsl .config && cat overlay/config-append >> .config
       
       - name: Build linux kernel
-        run: make
+        run: make KCONFIG_CONFIG=.config
       
       - name: Get date
         run: echo "date=$(date +'%m/%d_%Y_%H/%M')" >> $GITHUB_ENV
@@ -44,12 +44,12 @@ jobs:
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.0.0
         with:
-          path: arch/x86/boot/bzImage
+          path: vmlinux
       
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.REPO_TOKEN }}"
-          files: arch/x86/boot/bzImage  
+          files: vmlinux  
           prerelease: false
           automatic_release_tag: ${{ env.date }}
           
