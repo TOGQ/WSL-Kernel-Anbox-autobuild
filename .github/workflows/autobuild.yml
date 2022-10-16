@@ -46,9 +46,7 @@ jobs:
         with:
           path: |
           vmlinux
-          arch/x86/boot/bzImage
-          
-          
+          arch/x86/boot/bzImage  
       
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
